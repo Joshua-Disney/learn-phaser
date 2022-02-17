@@ -1,0 +1,112 @@
+1: Which of the following is an example of a single line comment?
+
+A console.log('Is this a comment?');
+B console.log()
+C 'Is this a comment?'
+D // Is this a comment?
+My guess: D  Correct
+
+
+2: What is string interpolation?
+
+A Changing the value of a variable.
+B Printing a string to the console.
+C Using template literals to embed variables into strings.
+D Joining multiple strings together using operators like +
+My guess: C  Correct
+
+
+3: What is string concatenation?
+
+A When you join strings together.
+B When you change a variable’s value.
+C When you print a string to the console.
+D When you assign a string to a variable.
+My guess: A  Correct
+
+
+4: Which of the following code snippets would cause an error?
+
+A let food = 'chicken';
+food = 'sushi';
+
+B const food = 'chicken';
+food = 'sushi';
+
+C let food = 'chicken';
+let drink = 'seltzer';
+
+D const foodOne = 'chicken';
+const foodTwo = 'sushi';
+My guess: B  Correct
+
+
+5: What is the correct way to call a string’s built-in method?
+
+A toUpperCase('codecademy');
+B toUpperCase.'codecademy'();
+C 'codecademy'.toUpperCase();
+D 'codecademy'.toUpperCase;
+My guess: C  Correct
+
+
+6: What is the outcome of this statement?
+console.log('hi!'.length);
+
+A 1 is printed to the console.
+B 'hi!'.length will be printed to the console.
+C hi! is printed to the console.
+D 3 is printed to the console.
+My guess: D  Correct
+
+
+7: What is the correct way to call the random method on the Math global object?
+
+A Math(random)
+B math.random()
+C random.Math()
+D Math.random()
+My guess: D  Correct
+
+
+8: What are variables used for in JavaScript?
+
+A For changing a value’s data type.
+B For changing language settings.
+C For storing or holding data.
+My guess: C  Correct
+
+
+9: What is the correct way to declare a new variable that you can change?
+
+A const myName = 'Sloan';
+B let myName = 'Sloan';
+C let myName: 'Sloan';
+D myName = 'Sloan';
+My guess: B  Correct
+
+
+10: What is the outcome of the following code snippet?
+console.log('Hello world');
+
+A Hello world is stored as a variable.
+B Hello world is printed to the console.
+C log('Hello world') is printed to the console.
+D 'Hello world' is printed to the console with single quotation marks.
+My guess: D  Incorrect  
+Should have been B  
+The quotes are needed in the code to denote a string, but they are not printed by console.log().
+
+
+11: What will the following code print to the console?
+let num = 10;
+num *= 3;
+console.log(num); 
+
+A 30
+B 3
+C 'num'
+D 10
+My guess: A  Correct
+
+Retaking quiz on Codecademy to solidify knowledge and to mark score as perfect.
