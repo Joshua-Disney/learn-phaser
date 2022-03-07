@@ -26,7 +26,12 @@ class GameScene extends Phaser.Scene {
 			key: 'l',
 			x: 380,
 			y: 310,
-		}];
+		},
+    {
+      key: 'i',
+      x: 240,
+      y: 230,
+    }];
 	}
 
 	// import all of the visual assets we will use throughout the game
@@ -116,6 +121,7 @@ class GameScene extends Phaser.Scene {
         applyMissPenalty()
       }
     }
+
     // pauses and unpauses the game
     const togglePause = () => {
       if (isPaused === false) {
@@ -130,9 +136,11 @@ class GameScene extends Phaser.Scene {
 		if (isPaused === false) {
 			// check each burrow's location if the user is hitting the corresponding key
 			// and run the handler to determine if user should get a reward or penalty
-			if (Phaser.Input.Keyboard.JustDown(gameState.jKey)) {
+			if (Phaser.Input.Keyboard.JustDown(gameState.iKey)) {
+        onBurrowHit('i')
+			} else if (Phaser.Input.Keyboard.JustDown(gameState.jKey)) {
         onBurrowHit('j')
-			} else if (Phaser.Input.Keyboard.JustDown(gameState.kKey)) {
+			}else if (Phaser.Input.Keyboard.JustDown(gameState.kKey)) {
         onBurrowHit('k')
 			} else if (Phaser.Input.Keyboard.JustDown(gameState.lKey)) {
         onBurrowHit('l')
@@ -163,6 +171,7 @@ class GameScene extends Phaser.Scene {
 	// go through each burrow and set up listeners on the corresponding key
 	initializeBurrowKeys() {
 		// set up listeners at the burrow's assigned key that will tell us when user input at that key occurs
+    gameState.iKey = this.input.keyboard.addKey('i');
 		gameState.jKey = this.input.keyboard.addKey('j');
 		gameState.kKey = this.input.keyboard.addKey('k');
 		gameState.lKey = this.input.keyboard.addKey('l');
@@ -211,7 +220,7 @@ class GameScene extends Phaser.Scene {
 		this.anims.create({
 			key: 'idle',
 			frames: this.anims.generateFrameNumbers('mole', { frames: [1, 3, 1, 1, 4] }),
-			frameRate: 3,
+			frameRate: 6,
 			repeat: -1,
 		});
 
