@@ -1,7 +1,9 @@
 // Stores the current "key" location of the mole
 let currentBurrowKey;
-
 const gameState = {};
+let timeLeft = 30
+let score = 0
+let isPaused = false
 
 class GameScene extends Phaser.Scene {
 	constructor() {
@@ -41,10 +43,13 @@ class GameScene extends Phaser.Scene {
 
 	// set up scene visuals, animations, and game logic when events occur
 	create() {
+    // updates timer
+    const updateTimer = () => timeLeft -= 1
+
 		// executed after every second passes
 		const onSecondElapsed = () => {
 			if (isPaused === false) {
-
+        updateTimer()
 				// display the new time to the user
 				this.updateTimerText();
 			}
@@ -77,11 +82,17 @@ class GameScene extends Phaser.Scene {
 			this.scene.start('EndScene');
 		}
 
+    // adds or removes points to the score
+    const updateScore = points => {
+      score += points
+    }
+
 		// user successfully hit the mole, so reward the user with 5pts
 		const applyHitReward = () => {
 			// display how many points the user will gain
 			this.displayRewardText();
-
+      // add the points to the score
+      updateScore(5)
 			// display the new score to the user
 			this.updateScoreText();
 		};
@@ -90,25 +101,46 @@ class GameScene extends Phaser.Scene {
 		const applyMissPenalty = () => {
 			// display how many points the user will lose
 			this.displayPenaltyText();
-
+      // deduct points from the score
+      updateScore(-5)
 			// display the new score to the user
 			this.updateScoreText();
 		};
+ 
+    // checks if correct key was pressed or not and awards or penalizes points accordingly
+    const onBurrowHit = key => {
+      if (key === currentBurrowKey) {
+        applyHitReward()
+        this.relocateMole()
+      } else {
+        applyMissPenalty()
+      }
+    }
+    // pauses and unpauses the game
+    const togglePause = () => {
+      if (isPaused === false) {
+        isPaused = true
+        this.displayPauseScreen()
+      } else {
+        isPaused = false
+        this.removePauseScreen()
+      }
+    }
 
 		if (isPaused === false) {
 			// check each burrow's location if the user is hitting the corresponding key
 			// and run the handler to determine if user should get a reward or penalty
 			if (Phaser.Input.Keyboard.JustDown(gameState.jKey)) {
-
+        onBurrowHit('j')
 			} else if (Phaser.Input.Keyboard.JustDown(gameState.kKey)) {
-
+        onBurrowHit('k')
 			} else if (Phaser.Input.Keyboard.JustDown(gameState.lKey)) {
-
+        onBurrowHit('l')
 			}
 		}
 
 		if (Phaser.Input.Keyboard.JustDown(gameState.spaceKey)) {
-
+      togglePause()
 		}
 	}
 
