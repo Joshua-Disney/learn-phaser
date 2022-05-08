@@ -1,0 +1,7 @@
+LEARN JAVASCRIPT: ARRAYS AND LOOPS
+Treasure Hunter
+Let’s combine our knowledge of loops and arrays to finish building a game that pits two treasure hunters against each other in a race to find the most golden coins!
+
+The premise of the game is that there is a grid outlined on the screen. Within that grid, there are plots that have the possibility of containing a golden coin. The player and computer take turns clicking on plots to reveal what is there and the first treasure hunter to get to 3 coins wins the game!
+
+You will be using your knowledge of loops to create an array that will contain the grid of plots. You will use this array to determine which of those plots will contain hidden coins. That will be followed by completing a function that determines if the player’s selection has a hidden coin.
