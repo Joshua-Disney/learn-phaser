@@ -1,0 +1,135 @@
+INITIAL SCORE: 9/9  100%
+
+
+
+1: You want to run a code block at least once, then loop as long as a condition remains true. Which kind of loop would you use?
+
+A: A do...while statement
+B: A for statement
+C: A nested for loop
+D: A while statement
+
+My guess: A
+CORRECT
+
+
+2: Which statement is true about while loops?
+
+A: while loops evaluate a condition for however long it’s true and the looping stops when the condition is false.
+B: while loops only run while the condition is false.
+C: while loops always loop over a code block a known amount of times.
+D: while loops will run at least once, then will run again if their condition is true.
+
+My guess: A
+CORRECT
+
+
+3: What is incorrect about the code block?
+
+  for (let i = 0, i < myArray.length,  i++) {
+    console.log(myArray[i]);
+  };
+
+A: The condition of the loop should be separated by semicolons, not commas.
+B: i++ should be i = i + 1.
+C: The for loop expressions are out of order.
+D: let is not needed for the start condition.
+
+My guess: A
+CORRECT
+
+
+4: What do nested for loops do?
+
+A: Nested for loops allow us to run multiple for loops at once.
+B: Nested for loops allow us to double check our if...else statements.
+C: Nested for loops run the same code twice.
+D: Nested for loops are bad because they run forever.
+
+My guess: A
+CORRECT
+
+
+5: What will be the result of the code block?
+
+let socialMedia = ['Instagram', 'Facebook', 'Twitter'];
+ 
+for (let socialMediaIndex = 0; socialMediaIndex < socialMedia.length; socialMediaIndex++) {
+    console.log(socialMedia[socialMediaIndex]);
+}
+
+A: ‘Twitter’
+‘Facebook’
+‘Instagram’
+
+B: socialMedia[0]
+socialMedia[1]
+socialMedia[2]
+
+C: ‘Instagram’
+‘Facebook’
+‘Twitter’
+
+D: ‘0: Instagram’
+‘1: Facebook’
+‘2: Twitter’
+
+My guess: C
+CORRECT
+
+
+6: What would the output of this block of code be?
+
+const animal = 'cat';
+ 
+for (let i = 0; i < animal.length; i++) {
+  console.log(animal[i]);
+  for (let j = 1; j < 4; j++) {
+    console.log(j);
+  }
+}
+
+A: c 1 2 3 a 1 2 3 t 1 2 3
+B: c a t 1 2 3
+C: 1 c a t 2 c a t 3 c a t
+D: 1 c 2 a 3 t
+
+My guess: A
+CORRECT
+
+
+7: Which statement is true about for loops?
+
+A: for loops are appropriate when looping a predetermined number of times.
+B: for loops can never result in an infinite loop.
+C: for loops always run an unknown number of times.
+D: for loops always count from 0 upwards.
+
+My guess: A
+CORRECT
+
+
+8: What is the general purpose of a loop?
+
+A: Loops read and recreate code automatically.
+B: Loops automatically iterate a block of code based on conditions.
+C: Loops iterate through arrays to find elements.
+D: All loops help the computer make decisions automatically.
+
+My guess: B
+CORRECT
+
+
+9: What problem is caused by this code block?
+
+for (let i = 10; i > 0; i++) {
+  console.log(i);
+};
+
+A: The code will loop forever because i will always be greater than 0.
+B: The code won’t run because the stop condition is less than the start condition.
+C: i = 10 and i > 0 should be switched.
+D: You can’t run a loop without an array.
+
+My guess: A
+CORRECT
