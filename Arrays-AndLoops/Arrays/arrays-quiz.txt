@@ -1,0 +1,169 @@
+INITIAL SCORE: 100%
+
+
+
+1: What will be logged to the console when we run the code below?
+
+const myArray = ['item 0', 'item 1', 'item 2'];
+myArray.push('item 3');
+myArray.pop();
+console.log(myArray);
+
+A: ['item 1', 'item 2', 'item 3']
+
+B: ['item 0', 'item 1', 'item 2', 'item 3']
+
+C: ['item 0', 'item 1', 'item 2']
+
+My guess: C
+CORRECT
+
+
+2: What will be printed to the console?
+
+const fruits = ['Apples', 'Oranges', 'Pears', 'Mangos']; 
+fruits[2] = 'Bananas';
+console.log(fruits); 
+
+A: ['Apples', 'Oranges', 'Pears', 'Bananas', 'Mangos']
+
+B: ['Apples', 'Oranges', 'Bananas', 'Mangos']
+
+C: ['Apples', 'Bananas', 'Pears', 'Mangos']
+
+D: ['Apples', 'Oranges', 'Bananas', 'Pears', 'Mangos']
+
+My guess: B
+CORRECT
+
+
+3: What is the purpose of an array?
+
+A: To store data in an organized fashion.
+
+B: To organize data into key-value pairs.
+
+C: To store data only of the same type.
+
+D: To organize data at lettered positions.
+
+My guess: A
+CORRECT
+
+
+4: How can you find how many elements are within an array?
+
+A: myArray.findLength
+
+B: myArray.length
+
+C: length(myArray)
+
+My guess: B
+CORRECT
+
+
+5: Which of the methods below does NOT change the array it is called on?
+
+A: .shift()
+
+B: .push()
+
+C: .slice()
+
+D: .pop()
+
+My guess: C
+CORRECT
+
+
+6: What will happen after running the following code?
+
+const countries = ['Japan', 'Denmark', 'Mexico', 'Morocco'];
+countries.shift();
+console.log(countries); 
+countries =  ['England', 'Mozambique', 'Cambodia', 'Peru']; 
+console.log(countries); 
+
+A: One array will be logged to the console followed by an error message
+
+['Japan', 'Denmark', 'Mexico'];
+TypeError: Assignment to constant variable
+
+B: Two arrays will be logged to the console:
+
+['Denmark', 'Mexico', 'Morocco'];
+['England', 'Mozambique', 'Cambodia', 'Peru'];
+
+C: Two arrays will be logged to the console:
+
+['Japan', 'Denmark', 'Mexico'];
+['England', 'Mozambique', 'Cambodia', 'Peru'];
+
+D: One array will be logged to the console followed by an error message
+
+['Denmark', 'Mexico', 'Morocco'];
+TypeError: Assignment to constant variable
+
+My guess: D
+CORRECT
+
+
+7: What is the correct syntax for an array?
+
+A: let myArray = {'Rappel into a cave', 'Take a falconry class', 'Learn to juggle'};
+
+B: let myArray = 'Rappel into a cave', 'Take a falconry class', 'Learn to juggle';
+
+C: let myArray = ['Rappel into a cave', 'Take a falconry class', 'Learn to juggle'];
+
+D: let myArray = ['Rappel into a cave'; 'Take a falconry class'; 'Learn to juggle'];
+
+My guess: C
+CORRECT
+
+
+8: What is the value of topPriority?
+
+const errands = ['Go to the bank', 'Pick up dry cleaning', 'Go grocery shopping'];
+const topPriority = errands.indexOf('Pick up dry cleaning');
+
+A: 1
+
+B: 2
+
+C: undefined
+
+D: -1
+
+My guess: A
+CORRECT
+
+
+9: What will be logged to the console when we run the code below?
+
+const cities = ['Chicago', 'San Francisco', 'New York'];
+console.log(cities[3]);
+
+A: undefined
+
+B: New York
+
+C: Chicago
+
+My guess: A
+CORRECT
+
+
+10: How could you access the second item, ‘Lion’, in the following code block?
+
+const animalArray = ['Sloth', 'Lion', 'Chipmunk'];
+
+A: animalArray[2]
+
+B: animalArray['Lion'];
+
+C: animalArray[1]
+
+My guess: C
+CORRECT
