@@ -1,3 +1,5 @@
+// NOT WORKING AND I DON'T KNOW WHY!!!!  :,(
+
 // Global variables
 const cubeSize = 38;
 let board;
@@ -65,14 +67,17 @@ class GameScene extends Phaser.Scene {
         // Listener for clicks on cubes
         this.input.on('gameobjectdown', function (pointer, cube, event) {
             // Declare a constant, neighborCubes, below
-
+            const neighborCubes = getNeighbors(cube)
             // Remove matching cubes from game if there's at least 2 of them
             if (neighborCubes.length > 0) {
                 // Update score
                 score += neighborCubes.length;
                 scoreText.setText(`Score: ${score}`);
                 // Update each cube in neighborCubes here
-
+                neighborCubes.forEach(neighbor => {
+                    neighbor.destroy()
+                    renderCubes(neighbor)
+                })
                 removeCols();
             }
 
@@ -104,7 +109,9 @@ class GameScene extends Phaser.Scene {
 
         // Add code to fill board array with cube sprites and return it
         return board.map((col, i) => {
-
+            return col.map((row, j) => {
+                return this.makeCube(i, j)
+            })
         });
     }
 
@@ -191,8 +198,12 @@ const checkClosest = (cube) => {
 // Helper function to get neighborCubes of a block
 const getNeighbors = (cube) => {
     // Variables
+    console.log('cube: ', cube)
     let start = cube;
+    console.log('start: ', start)
+    console.log('[start]: ', [start])
     let cubesToCheck = [start];
+    console.log('cubesToCheck: ', cubesToCheck)
     let validNeighborCubes = [];
     // Check cubes in cubesToCheck for valid neighborCubes
     while (cubesToCheck.length > 0) {
@@ -203,7 +214,12 @@ const getNeighbors = (cube) => {
             curr.removed = true;
         }
         // Add code to get matching cubes, below
-
+        const matches = checkClosest()
+        matches.forEach(match => {
+            match.removed = true;
+            validNeighborCubes.push(match);
+            cubesToCheck.push(match);
+        })
     }
     // If not enough matching cubes, clear and reset the clicked cube
     if (validNeighborCubes.length === 1) {
