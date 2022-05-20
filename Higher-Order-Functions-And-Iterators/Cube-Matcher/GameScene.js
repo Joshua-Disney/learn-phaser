@@ -1,4 +1,4 @@
-// NOT WORKING AND I DON'T KNOW WHY!!!!  :,(
+// NOT WORKING AND I NO LONGER CARE WHY!!!!  :,(
 
 // Global variables
 const cubeSize = 38;
@@ -159,6 +159,7 @@ class GameScene extends Phaser.Scene {
 
 // Helper function that only checks the immediate neighbors of a cube
 const checkClosest = (cube) => {
+    console.log('cube from checkClosest: ', cube)
     const results = [];
     // Coordinates of up, down, left, right cubes to check
     const directions = [
@@ -233,7 +234,20 @@ const getNeighbors = (cube) => {
 // Helper function shifts removes empty columns
 const removeCols = () => {
     // Declare a emptyCols here:
-
+    const emptyCols = board.map((col, i) => {
+        const isEmpty = col.every(cube => cube.removed)
+        if (isEmpty) {
+            return i
+        } else {
+            return false
+        }
+    }).filter(index => {
+        if (index === false) {
+            return false
+        } else {
+            return true
+        }
+    })
     // For each empty column, shift all remaining columns to the left
     emptyCols.forEach(emptyCol => {
         const columnsToMove = board.slice(emptyCol + 1);
@@ -252,7 +266,9 @@ const removeCols = () => {
 // Helper function to check remaining moves
 const remainingMoves = () => {
     // Add code to return true or false at least 1 remaining move in board
-
+    return board.some(col => {
+        col.doesColumnContainValidMoves()
+    })
 }
 
 const doesColumnContainValidMoves = (column) => {
