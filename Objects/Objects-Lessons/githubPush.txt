@@ -1,0 +1,1 @@
+I wrote code today but it was on codecademy.  This message is for the Github green since nothing was copied to VS Code

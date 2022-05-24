@@ -10,11 +10,11 @@ class GameScene extends Phaser.Scene {
 
     preload() {
         // Load images for board and cubes
-        this.load.spritesheet('blocks', 'https://content.codecademy.com/courses/learn-phaser/cube-matcher/blocks.png', {
+        this.load.spritesheet('blocks', 'https://codecademy-content.s3.amazonaws.com/courses/learn-phaser/cube-matcher/blocks.png', {
             frameWidth: cubeSize,
             frameHeight: cubeSize
         });
-        this.load.image('grid', 'https://content.codecademy.com/courses/learn-phaser/cube-matcher/grid.png');
+        this.load.image('grid', 'https://codecademy-content.s3.amazonaws.com/courses/learn-phaser/cube-matcher/grid.png');
     }
 
     create() {
@@ -65,7 +65,7 @@ class GameScene extends Phaser.Scene {
         // Listener for clicks on cubes
         this.input.on('gameobjectdown', function (pointer, cube, event) {
             // Declare a constant, neighborCubes, below
-            const neighborCubes = getNeighbors(cube)
+            const neighborCubes = getNeighbors(cube);
             // Remove matching cubes from game if there's at least 2 of them
             if (neighborCubes.length > 0) {
                 // Update score
@@ -73,8 +73,8 @@ class GameScene extends Phaser.Scene {
                 scoreText.setText(`Score: ${score}`);
                 // Update each cube in neighborCubes here
                 neighborCubes.forEach(neighbor => {
-                    neighbor.destroy()
-                    renderCubes(neighbor)
+                    neighbor.destroy();
+                    renderCubes(neighbor);
                 })
                 removeCols();
             }
@@ -107,9 +107,7 @@ class GameScene extends Phaser.Scene {
 
         // Add code to fill board array with cube sprites and return it
         return board.map((col, i) => {
-            return col.map((row, j) => {
-                return this.makeCube(i, j)
-            })
+            return col.map((row, j) => this.makeCube(i, j));
         });
     }
 
@@ -208,12 +206,12 @@ const getNeighbors = (cube) => {
             curr.removed = true;
         }
         // Add code to get matching cubes, below
-        const matches = checkClosest(curr)
+        const matches = checkClosest(curr);
         matches.forEach(match => {
             match.removed = true;
             validNeighborCubes.push(match);
             cubesToCheck.push(match);
-        })
+        });
     }
     // If not enough matching cubes, clear and reset the clicked cube
     if (validNeighborCubes.length === 1) {
@@ -228,19 +226,9 @@ const getNeighbors = (cube) => {
 const removeCols = () => {
     // Declare a emptyCols here:
     const emptyCols = board.map((col, i) => {
-        const isEmpty = col.every(cube => cube.removed)
-        if (isEmpty) {
-            return i
-        } else {
-            return false
-        }
-    }).filter(index => {
-        if (index === false) {
-            return false
-        } else {
-            return true
-        }
-    })
+        const isEmpty = col.every(cube => cube.removed);
+        return isEmpty ? i : false;
+    }).filter(value => value !== false);
     // For each empty column, shift all remaining columns to the left
     emptyCols.forEach(emptyCol => {
         const columnsToMove = board.slice(emptyCol + 1);
@@ -259,7 +247,7 @@ const removeCols = () => {
 // Helper function to check remaining moves
 const remainingMoves = () => {
     // Add code to return true or false at least 1 remaining move in board
-    return board.some(col => doesColumnContainValidMoves(col))
+    return board.some(col => doesColumnContainValidMoves(col));
 }
 
 const doesColumnContainValidMoves = (column) => {
