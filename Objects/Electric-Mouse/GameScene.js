@@ -58,7 +58,32 @@ class GameScene extends Phaser.Scene {
     create() {
         // Character objects
         // Add the player object below:
-
+        gameState.player = {
+            name: 'Electric Mouse',
+            health: 45,
+            frames: [
+                {
+                    key: 'playerIdle',
+                    start: 0,
+                    end: 2
+                },
+                {
+                    key: 'playerAttack',
+                    start: 3,
+                    end: 4
+                },
+                {
+                    key: 'playerDefend',
+                    start: 5,
+                    end: 6
+                },
+                {
+                    key: 'playerSpecial',
+                    start: 7,
+                    end: 8
+                }
+            ]
+        }
 
         gameState.opponents = [{
             name: 'Owl',
@@ -163,7 +188,7 @@ class GameScene extends Phaser.Scene {
         ];
 
         // Set the current opponent below:
-
+        gameState.computer = gameState.opponents[0]
 
         // Adds in the background
         this.add.sprite(240, 320, 'Background').setScale(.5);
@@ -212,9 +237,17 @@ class GameScene extends Phaser.Scene {
         gameState.specialButton = this.add.sprite(390, 550, 'Special').setInteractive();
 
         // Add your information text and styling below: 
+        const style = {
+            font: '16px Helvetica',
+            fill: '#000000',
+            padding: { x: 6, y: 7 }
+        }
 
-
-
+        gameState.playerMove = this.add.text(65, 140, '', style)
+        gameState.computerMove = this.add.text(320, 140, '', style)
+        gameState.information = this.add.text(140, 80, '', style)
+        gameState.playerHealthBar = this.add.text(75, 45, `HP: ${gameState.player.health}`, style)
+        gameState.computerHealthBar = this.add.text(345, 45, `HP: ${gameState.computer.health}`, style)
 
         // Attack button logic:
         gameState.attackButton.on('pointerup', () => {
