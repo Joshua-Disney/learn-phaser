@@ -1,0 +1,242 @@
+
+
+
+1: Which of the following Object methods can be used to copy all of the properties of an object into a new object?
+
+A: Object.keys()
+B: Object.entries()
+C: Object.assign()
+D: myObject.hasOwnProperty()
+
+My Guess: C
+CORRECT
+
+
+2: Which of the following is an example of destructured assignment?
+
+const myDog = {
+  name: 'Tadpole',
+  breed: 'mutt',
+  color: 'tan',
+  weight: 32
+}
+ 
+A: let name = myDog.name;
+B: let {name} = myDog.name;
+C: let color = 'tan';
+D: let {name} = myDog;
+
+My Guess: D
+CORRECT
+
+
+3: What are the keys in this object?
+
+let apartment = {
+  coffeeMaker: 'Aeropress',
+  ceilingFan: true,
+  books: 114
+}
+
+A: coffeeMaker: 'Aeropress',
+ceilingFan: true,
+books: 114
+
+B: 'Aeropress',
+true,
+114
+
+C: coffeeMaker,
+ceilingFan,
+books
+
+My Guess: C
+CORRECT
+
+
+4: What is a method?
+
+A: A method is property with a function as its value.
+B: A method is a function that takes an object as its parameter.
+C: A method is a general term used to describe how to create objects.
+
+My Guess: A
+CORRECT
+
+
+5: What is a factory function?
+
+A: A function that takes an object as an argument and then modifies it.
+B: A function that returns an object.
+C: A function that returns an array of objects.
+
+My Guess: B
+CORRECT
+
+
+6: What will the following code output?
+
+const car = {
+  numDoors: 4,
+  isDirty: true,
+  color: 'red'
+}
+ 
+for (let key in car) {
+  console.log(key)
+}
+
+A: 4
+true
+red
+
+B: numDoors
+isDirty
+color
+
+C: numDoors: 4
+isDirty: true
+color: red
+
+My Guess: B
+CORRECT
+
+
+7: What should we add to the empty .withDiscount() method to return the cost of the meatballs object with a two dollar discount?
+
+let meatballs = {
+    cost: 5,
+    withDiscount() {
+ 
+    }
+};
+
+A: return cost - 2;
+B: return this.cost - 2;
+C: cost - 2;
+D: this.cost - 2;
+
+My Guess: B 
+CORRECT
+
+
+8: What’s wrong with setter method in the example below?
+
+let tempObj = {
+  _num: 22,
+  set num(numIn) { 
+    _num = numIn;
+  }
+};
+
+A: There is nothing wrong with the method.
+B: The _num key should not have an underscore (_) in it.
+C: The setter should contain this._num in place of _num.
+D: The setter input argument should be called num.
+
+My Guess: C 
+CORRECT
+
+
+9: How can we call the method in the code below?
+
+let myObj = {
+  sayHello() {
+    return 'Hello there!';
+  }
+}
+
+A: sayHello()
+B: myObj.sayHello
+C: myObj['sayHello']
+D: myObj.sayHello()
+
+My Guess: D
+CORRECT
+
+
+10: Which line of code would NOT print the value saved to the _num key in the tempObj object.
+
+let tempObj = {
+    _num: 22,
+    get num() {
+        return this._num;
+    }
+};
+
+A: console.log(tempObj._num);
+B: console.log(tempObj.num());
+C: console.log(tempObj['num']);
+D: console.log(tempObj.num);
+
+My Guess: B
+CORRECT
+
+
+11: Given the following code, which expression will evaluate to apples?
+
+const refrigerator = {
+  dairy: ['cheese', 'milk', 'sour cream'],
+  temperature: 35,
+  'produce drawer': {
+    vegetables: ['lettuce', 'broccoli', 'peas'],
+    fruit: ['apples', 'berries', 'grapes'] 
+  }
+}
+
+A: refrigerator['produce drawer'].fruit[0]
+B: refrigerator.temperature
+C: refrigerator['produce drawer']
+D: refrigerator.'produce drawer'.fruit[0]
+
+My Guess: A
+CORRECT
+
+
+12: How can we add a property to the object below?
+
+let bikes = {
+  schwinn: 'blue',
+  trek: 'black'
+}
+
+A: bikes = specialized: 'red';
+B: bikes.'specialized' = 'red';
+C: bikes['specialized'] = 'red';
+D: let bikes.specialized = 'red'
+
+My Guess: B 
+INCCORECT, CORRECT ANSWER IS C
+
+
+13: Which of the following statements is correct?
+
+A: Objects can’t store other objects.
+B: Objects store unordered data of any type as key-value pairs.
+C: Objects store data in numbered positions.
+D: Objects only store strings.
+
+My Guess: B 
+CORRECT
+
+
+14: Which is the correct syntax for creating an object literal?
+
+A: let myObject: {
+  greeting = 'hello'
+};
+
+B: let myObject; {
+  greeting: 'hello'
+};
+
+C: let myObject = {
+  greeting: 'hello'
+};
+
+D: let myObject = {
+  greeting = 'hello'
+};
+
+My Guess: C
+CORRECT
