@@ -1,0 +1,8 @@
+Electric Mouse
+Let’s combine our knowledge of objects to finish building a game that pits our Electric Mouse against the Psychic Hairless Cat and its Owl minions!
+
+The premise of the game is that there are two characters battling each other. The player is an Electric Mouse, and the computer is the Psychic Hairless Cat and its Owl Minions. Before the player can fight the Psychic Hairless Cat, the player must beat three Owl minions. The player and computer will simultaneously choose one of three moves, Attack, Defend, and Special Attack, the result of the selections are then displayed on the screen.
+
+We will be working in one file called GameScene.js. In GameScene.js you will be using a gameState object to store the state of the game. gameState will keep track of all states of our characters, buttons, and text information will be held. We’ll get a sneak peek at sprite and animation creation using some Phaser syntax. We also have to build out the logic for our Attack and Defend buttons.
+
+Can you beat them all?
