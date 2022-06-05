@@ -1,0 +1,257 @@
+TOTAL SCORE: 11 / 11  100%
+
+
+1: How would you call the .randomBorough() method in the example below?
+
+class RentalUnit {
+  constructor(address, costPerYear) {
+    this._address = address;
+    this._costPerYear = costPerYear;
+  }
+ 
+  get address() {
+    return this._address;
+  }
+ 
+  get costPerYear() {
+    return this._costPerYear;
+  }
+ 
+  calculateMonthly() {
+    return this.costPerYear / 12; 
+  }
+}
+ 
+class Apartment extends RentalUnit {
+  constructor(address, costPerYear, numberOfBedrooms) {
+    super(address, costPerYear);
+    this._numberOfBedrooms = numberOfBedrooms;
+  }
+ 
+  get numberOfBedrooms() {
+    return this._numberOfBedrooms;
+  }
+ 
+  static randomBorough() {
+    const myBoroughs = ['Manhattan', 'Brooklyn', 'Queens', 'The Bronx', 'Staten Island'];
+    return myBoroughs[Math.floor(Math.random() * 5)];
+  }
+}
+ 
+const myApartment = new Apartment('1234 W 54th', 22000, 3);
+ 
+A: RentalUnit.randomBorough()
+B: myApartment.randomBorough()
+C: .randomBorough()
+D: Apartment.randomBorough()
+
+My Guess: D
+CORRECT
+
+
+2: What is the purpose of inheritance?
+
+A: To create new functions that have the same data and methods as other functions.
+B: To share data and methods between objects.
+C: To create functions that pass through the same parameters through a chain of functions.
+
+My Guess: B
+CORRECT
+
+
+3: Which of the following problems do classes alleviate?
+
+A: Classes inherit properties and methods from objects that make it easy to create objects with the same property values,  but different property names.
+B: Classes make it easy to create multiple objects that share property names and methods.
+C: Objects make it easy to create multiple classes that share properties and methods.
+D: Classes make it easy to create multiple objects that share property names, but not methods.
+
+My Guess: B
+CORRECT
+
+
+4: What is the purpose of the constructor() method?
+
+A: The constructor() method is only used in subclasses. The arguments are sent to the parent class where the properties are set.
+B: The constructor() is called when you create a new instance of a class. It sets the property values for each instance.
+C: Each property has a constructor() method. It is called whenever you try to set or get the property.
+D: Subclasses inherit the constructor() from the parent class to set property values for the child class.
+
+My Guess: B 
+CORRECT
+
+
+5: Which of the following is a method of the RentalUnit class?
+
+class RentalUnit {
+  constructor(address, cost) {
+    this._address = address;
+    this._cost = cost;
+  }
+ 
+  get address() {
+    return this._address;
+  }
+ 
+  get cost() {
+    return this._cost;
+  }
+ 
+  calculateMonthly() {
+    return this.cost / 12; 
+  }
+}
+
+A: RentalUnit
+B: _address
+C: _cost
+D: .calculateMonthly()
+
+My Guess: D 
+CORRECT
+
+
+6: Which of the following will create an instance of the RentalUnit class, and save it to a variable called myRental?
+
+class RentalUnit {
+  constructor(address, cost) {
+    this._address = address;
+    this._cost = cost;
+  }
+ 
+  get address() {
+    return this._address;
+  }
+ 
+  get cost() {
+    return this._cost;
+  }
+ 
+  calculateMonthly() {
+    return this.cost / 12; 
+  }
+}
+
+A: const myRental = RentalUnit;
+B: const myRental = new RentalUnit('111 33rd St NE', 19000);
+C: const myRental = RentalUnit('111 33rd St NE', 19000);
+D: const myRental = new RentalUnit;
+
+My Guess: B
+CORRECT
+
+
+7: What is the purpose of the super keyword?
+
+A: The super keyword is used in subclasses to call a parent constructor().
+B: The super keyword is used to make the methods in a parent class available to the subclass.
+C: The super keyword automatically create getters and setters for all properties.
+D: The super keyword is called in a parent class to access the properties in all subclasses.
+
+My Guess: A
+CORRECT
+
+
+8: Which of the following keywords is required to create a new class?
+
+A: let
+B: new
+C: const
+D: class
+
+My Guess: D
+CORRECT
+
+
+9: When you create a subclass using the extends keyword, what will the class inherit from its parent?
+
+A: The subclass inherits only the parent class getters and setters.
+B: The subclass does not directly inherit anything. You must use the super keyword to set properties and inherit getter, setters, and methods.
+C: The subclass inherits all parent properties.
+D: The subclass inherits all of the parent’s getters, setters, and methods. You can also use the super keyword to set properties in the parent class.
+
+My Guess: D
+
+
+10: Why will the code below throw an error?
+
+class RentalUnit {
+  constructor(address, costPerYear) {
+    this._address = address;
+    this._costPerYear = costPerYear;
+  }
+ 
+  get address() {
+    return this._address;
+  }
+ 
+  get costPerYear() {
+    return this._costPerYear;
+  }
+ 
+  calculateMonthly() {
+    return this.costPerYear / 12; 
+  }
+}
+ 
+class Apartment extends RentalUnit {
+  constructor(address, costPerYear, numberOfBedrooms) {
+    this._numberOfBedrooms = numberOfBedrooms;
+    super(address, costPerYear);
+  }
+ 
+  get numberOfBedrooms() {
+    return this._numberOfBedrooms;
+  }
+}
+ 
+const myApartment = new Apartment('1234 W 54th', 22000, 3);
+
+A: In Apartment‘s’ constructor(), the super keyword must be called before this is used.
+B: super should accept arguments for all three parameters: address, costPerYear, and numberOfBedrooms.
+C: _numberOfBedrooms should not have an underscore.
+D: You must include a setter for numberOfBedrooms.
+
+My Guess: A
+CORRECT
+
+
+11: Which of the following is the subclass in the example below?
+
+class RentalUnit {
+  constructor(address, costPerYear) {
+    this._address = address;
+    this._costPerYear = costPerYear;
+  }
+ 
+  get address() {
+    return this._address;
+  }
+ 
+  get costPerYear() {
+    return this._costPerYear;
+  }
+ 
+  calculateMonthly() {
+    return this.costPerYear / 12; 
+  }
+}
+ 
+class Apartment extends RentalUnit {
+  constructor(address, costPerYear, numberOfBedrooms) {
+    super(address, costPerYear);
+    this._numberOfBedrooms = numberOfBedrooms;
+  }
+ 
+  get numberOfBedrooms() {
+    return this._numberOfBedrooms;
+  }
+}
+
+A: RentalUnit
+B: bedrooms
+C: address
+D: Apartment
+
+My Guess: D
+CORRECT
