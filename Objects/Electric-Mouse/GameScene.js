@@ -254,8 +254,37 @@ class GameScene extends Phaser.Scene {
             this.pauseIdle()
             if (game.input.enabled) {
                 // Add your code for Electric Mouse attacking below:
-
-
+                let randomMove = Math.floor(Math.random() * 3)
+                // Both attack
+                if (randomMove === 0) {
+                    gameState.player.health -= 1
+                    gameState.computer.health -= 1
+                    gameState.playerMove.text = 'Attack!'
+                    gameState.computerMove.text = 'Attack!'
+                    gameState.playerHealthBar.text = `HP: ${gameState.player.health}`;
+                    gameState.computerHealthBar.text = `HP: ${gameState.computer.health}`;
+                    gameState.information.text = `Oof!  ${gameState.player.name} and ${gameState.computer.name} both lose 1 health!`
+                    gameState.player.sprite.anims.play('playerAttack')
+                    gameState.computerSprite.anims.play(`${gameState.computer.name}Attack`)
+                    // Player attacks and computer defends
+                } else if (randomMove === 1) {
+                    gameState.player.health -= 1
+                    gameState.playerMove.text = 'Attack!'
+                    gameState.computerMove.text = 'Defend!'
+                    gameState.playerHealthBar.text = `HP: ${gameState.player.health}`;
+                    gameState.information.text = `Oof!  ${gameState.player.name} loses 1 health!`
+                    gameState.player.sprite.anims.play('playerAttack')
+                    gameState.computerSprite.anims.play(`${gameState.computer.name}Defend`)
+                    // Player attacks and computer specials
+                } else {
+                    gameState.computer.health -= 5
+                    gameState.playerMove.text = 'Attack!'
+                    gameState.computerMove.text = 'Special Attack!'
+                    gameState.computerHealthBar.text = `HP: ${gameState.computer.health}`;
+                    gameState.information.text = `OUCH!  ${gameState.computer.name} loses 5 health!`
+                    gameState.player.sprite.anims.play('playerAttack')
+                    gameState.computerSprite.anims.play(`${gameState.computer.name}Special`)
+                }
             }
         });
 
@@ -264,7 +293,36 @@ class GameScene extends Phaser.Scene {
             this.pauseIdle()
             if (game.input.enabled) {
                 // Add your code for Electric Mouse defending below:
+                let randomMove = Math.floor(Math.random() * 3)
+                console.log('randomMove: ', randomMove)
 
+                // Play defends and computer attacks 
+                if (randomMove === 0) {
+                    gameState.computer.health -= 1
+                    gameState.playerMove.text = 'Defend!'
+                    gameState.computerMove.text = 'Attack!'
+                    gameState.computerHealthBar.text = `HP: ${gameState.computer.health}`;
+                    gameState.information.text = `Oof!  ${gameState.computer.name} loses 1 health!`
+                    gameState.player.sprite.anims.play('playerDefend')
+                    gameState.computerSprite.anims.play(`${gameState.computer.name}Attack`)
+                    // Both defend
+                } else if (randomMove === 1) {
+                    gameState.playerMove.text = 'Defend!'
+                    gameState.computerMove.text = 'Defend!'
+                    gameState.information.text = '... nothing happened.'
+                    gameState.player.sprite.anims.play('playerDefend')
+                    gameState.computerSprite.anims.play(`${gameState.computer.name}Defend`)
+                    // Player defends and computer specials
+                } else {
+                    console.log('This should happen then stop')
+                    gameState.player.health -= 4
+                    gameState.playerHealthBar.text = `HP: ${gameState.player.health}`
+                    gameState.playerMove.text = 'Defend!'
+                    gameState.computerMove.text = 'Special Attack!'
+                    gameState.information.text = `OUCH!  ${gameState.player.name} loses 4 health!`
+                    gameState.player.sprite.anims.play('playerDefend')
+                    gameState.computerSprite.anims.play(`${gameState.computer.name}Special`)
+                }
             }
         });
 
@@ -272,7 +330,9 @@ class GameScene extends Phaser.Scene {
         gameState.specialButton.on('pointerup', () => {
             this.pauseIdle()
             if (game.input.enabled) {
-                let randomMove = Math.floor(Math.random() * 3);
+
+                let randomMove = Math.floor(Math.random() * 3)
+
                 if (randomMove === 0) {
                     gameState.information.text = `The player loses 1 HP!`;
                     gameState.playerMove.text = 'Special Attack!';
