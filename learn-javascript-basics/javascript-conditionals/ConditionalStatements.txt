@@ -11,4 +11,4 @@ The logical operator ||, or “or”, checks if either provided expression is tr
 The bang operator, !, switches the truthiness and falsiness of a value.
 The ternary operator is shorthand to simplify concise if...else statements.
 A switch statement can be used to simplify the process of writing multiple else if statements. The break keyword 
-    stops the remaining cases from being checked and executed in a switch statement.
+stops the remaining cases from being checked and executed in a switch statement.
