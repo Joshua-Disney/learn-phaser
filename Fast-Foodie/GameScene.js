@@ -7,7 +7,9 @@ const gameState = {
     gameSpeed: 3,
     currentMusic: {},
     totalWaveCount: 3,
-    countdownTimer: 1500
+    countdownTimer: 1500,
+    readyForNextOrder: true,
+    customersServedCount: 0
 }
 
 // Gameplay scene
@@ -69,6 +71,8 @@ class GameScene extends Phaser.Scene {
             `${baseURL}audio/sfx/nextWave.ogg`,
             `${baseURL}audio/sfx/nextWave.mp3`
         ]); // Credit: "old fashion radio jingle 2.wav" by rhodesmas: https://freesound.org/people/chimerical
+
+        // end of preload
     }
 
     create() {
@@ -110,10 +114,34 @@ class GameScene extends Phaser.Scene {
         gameState.customers = this.add.group();
         this.generateWave();
 
+        gameState.currentMeal = this.add.group()
+        gameState.currentMeal.fullnessValue = 0
+        // end of create
     }
 
     update() {
 
+        if (gameState.readyForNextOrder === true) {
+            gameState.readyForNextOrder = false
+            gameState.customerIsReady = false
+            gameState.currentCustomer = gameState.customers.children.entries[gameState.customersServedCount]
+            this.tweens.add({
+                targets: gameState.currentCustomer,
+                x: gameState.player.x,
+                delay: 100,
+                angle: 90,
+                duration: 1000,
+                ease: 'Power2',
+                onComplete: () => {
+                    gameState.customerIsReady = true
+                    console.log('gameState: ', gameState)
+                    console.log('customer: ', gameState.customer)
+                    gameState.currentCustomer.meterContainer.visible = true
+                }
+            })
+        }
+
+        // end of update
     }
 
     /* WAVES */
@@ -121,6 +149,8 @@ class GameScene extends Phaser.Scene {
     generateWave() {
         // Add the total number of customers per wave here:
         gameState.totalCustomerCount = Math.ceil(Math.random() * 10) * gameState.currentWaveCount
+
+        this.updateCustomerCountText()
 
         for (let i = 0; i < gameState.totalCustomerCount; i++) {
             // Create your container below and add your customers to it below:
@@ -148,11 +178,11 @@ class GameScene extends Phaser.Scene {
             }
 
             // Edit the meterWidth
-            let meterWidth = 200;
+            let meterWidth = customerContainer.fullnessCapacity * 10;
             customerContainer.meterContainer = this.add.container(0, customer.y + (meterWidth / 2));
 
             // Add the customerContainer.meterContainer to customerContainer
-
+            customerContainer.add(customerContainer.meterContainer)
 
             // Add meter base
             customerContainer.meterBase = this.add.rectangle(-130, customer.y, meterWidth, 33, 0x707070).setOrigin(0);
@@ -169,7 +199,7 @@ class GameScene extends Phaser.Scene {
             customerContainer.fullnessMeterBlocks = [];
 
             // Create fullness meter blocks
-            for (let j = 0; j < 1; j++) {
+            for (let j = 0; j < customerContainer.fullnessCapacity; j++) {
                 customerContainer.fullnessMeterBlocks[j] = this.add.rectangle(customerContainer.meterBase.x, customer.y - (10 * j), 10, 20, 0xDBD53A).setOrigin(0);
                 customerContainer.fullnessMeterBlocks[j].setStrokeStyle(2, 0xB9B42E);
                 customerContainer.fullnessMeterBlocks[j].angle = -90;
@@ -180,5 +210,12 @@ class GameScene extends Phaser.Scene {
             // Hide meters
             customerContainer.meterContainer.visible = false;
         }
+        // end of waves
     }
+
+    updateCustomerCountText() {
+        gameState.customersLeftCount = gameState.totalCustomerCount - gameState.customersServedCount
+        gameState.customerCountText.setText('Customers left: ' + gameState.customersLeftCount)
+    }
+    // end of GameScene
 }
