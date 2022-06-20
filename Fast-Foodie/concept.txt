@@ -1,0 +1,7 @@
+LEARN PHASER VISUAL EFFECTS AND CAPSTONE
+FastFoodie
+Let’s make a polished video game! Your main character is a cafeteria server, and their goal is to satisfy as many customers as possible. You should feed as many customers—and exactly meet their hunger levels—while keeping your fast food restaurant’s rating above 1 star.
+
+You’ll build the line of customers and introduce three progressively harder waves. Additionally, you’ll create functionality to assess their hunger levels and build the ability to serve customers three different food items. To add flair, you’ll add movement tweens, color effects, and sound.
+
+You have honed your skills well, but, there are some features of Phaser that you haven’t used before — including the Camera Manager and containers. You’ve progressed so much already — we know you’ll conquer any new challenges that come your way!
