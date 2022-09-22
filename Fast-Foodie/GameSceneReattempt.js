@@ -115,6 +115,12 @@ class GameScene extends Phaser.Scene {
     gameState.currentMeal = {}
     this.add.group(gameState.currentMeal)
     gameState.currentMeal.fullnessValue = 0
+
+    // Key actions
+    gameState.keys.Enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER)
+    gameState.keys.A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A)
+    gameState.keys.S = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
+    gameState.keys.D = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D)
   }
 
   update() {
@@ -138,6 +144,33 @@ class GameScene extends Phaser.Scene {
       gameState.customerIsReady = true
     }
 
+  }
+
+  placeFood(food, fullnessValue) {
+    let Xposition = gameState.food.x
+
+    if (gameState.currentMeal.children.entries.length > 3 && gameState.customerIsReady === true) {
+      switch (gameState.currentMeal.children.entries.length) {
+        case 1:
+          Xposition += 50
+          break;
+        case 2:
+          Xposition += 100
+          break;
+      }
+    }
+    // THIS IS THE BIT I'M CONFUSED ABOUT
+    gameState.currentMeal.create(Xposition, gameState.food.y, 'Food')
+    // gameState.tray = this.add.sprite(gameState.cam.midPoint.xPosition, gameState.cam.midPoint.y, 'Tray').setScale(0.5)
+    gameState.currentMeal.fullnessValue += fullnessValue
+    
+    gameState.currentMeal.fullnessValue.forEach(() {
+      if (gameState.currentMeal.fullnessValue < gameState.currentCustomer.fullnessCapacity) {
+        if(thing) {
+          thing()
+        }
+      }
+    })
   }
 
   /* WAVES */
