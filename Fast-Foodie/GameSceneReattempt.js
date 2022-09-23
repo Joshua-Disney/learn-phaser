@@ -147,30 +147,50 @@ class GameScene extends Phaser.Scene {
   }
 
   placeFood(food, fullnessValue) {
-    let Xposition = gameState.food.x
 
     if (gameState.currentMeal.children.entries.length > 3 && gameState.customerIsReady === true) {
+      
+      let Xposition = gameState.tray.x
       switch (gameState.currentMeal.children.entries.length) {
+        case 0:
+          Xposition -= 90
+          break;
         case 1:
-          Xposition += 50
+          Xposition = Xposition
           break;
         case 2:
-          Xposition += 100
+          Xposition += 90
           break;
       }
+
+      gameState.currentMeal.create(Xposition, gameState.tray.y, food).setScale(0.75)
+      gameState.currentMeal.fullnessValue += fullnessValue
     }
-    // THIS IS THE BIT I'M CONFUSED ABOUT
-    gameState.currentMeal.create(Xposition, gameState.food.y, 'Food')
-    // gameState.tray = this.add.sprite(gameState.cam.midPoint.xPosition, gameState.cam.midPoint.y, 'Tray').setScale(0.5)
-    gameState.currentMeal.fullnessValue += fullnessValue
-    
-    gameState.currentMeal.fullnessValue.forEach(() {
+    // gameState.currentMeal.fullnessValue.forEach(function() {
+    //   if (gameState.currentMeal.fullnessValue < gameState.currentCustomer.fullnessCapacity) {
+    //     if(thing) {
+    //       thing()
+    //     }
+    //   }
+    // })
+    for (let i = 0; i < gameState.currentMeal.fullnessValue; i++) {
       if (gameState.currentMeal.fullnessValue < gameState.currentCustomer.fullnessCapacity) {
-        if(thing) {
-          thing()
+        gameState.currentCustomer.fullnessMeterBlocks[i].setFillStyle(0xFFFA81)
+      } else if (gameState.currentMeal.fullnessValue === gameState.currentCustomer.fullnessCapacity) {
+        gameState.currentCustomer.fullnessMeterBlocks[i].setFillStyle(0x3ADB40)
+        gameState.currentCustomer.fullnessMeterBlocks[i].setStrokeStyle(2, 0xEB94E)
+      }
+
+      if (gameState.currentMeal.fullnessValue > gameState.currentCustomer.fullnessCapacity) {
+        for (let j = 0; j < gameState.currentCustomer.fullnessMeterBlocks.length; j++) {
+          gameState.currentCustomer.fullnessMeterBlocks[j].setFillStyle(0xDB533A);
+          gameState.currentCustomer.fullnessMeterBlocks[j].setStrokeStyle(2, 0xB92E2E);    
+          // CONSOLE TESTING:
+          console.log('TOO full');
         }
       }
-    })
+    }
+
   }
 
   /* WAVES */
