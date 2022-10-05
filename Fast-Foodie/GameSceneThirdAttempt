@@ -434,6 +434,11 @@ class GameScene extends Phaser.Scene {
   } // End of placeFood()
 
   moveCustomerLine() {
+    console.log('moving customer line')
+    console.log('meal: ', gameState.currentMeal)
+    console.log('value: ', gameState.currentMeal.fullnessValue)
+    console.log('capacity: ', gameState.currentMeal.fullnessCapacity)
+    this.updateStars(gameState.currentMeal.fullnessValue, gameState.currentMeal.fullnessCapacity)
     gameState.currentMeal.clear(true);
     gameState.currentMeal.fullnessValue = 0;
     gameState.customersServedCount += 1;
@@ -441,9 +446,42 @@ class GameScene extends Phaser.Scene {
   } // End of moveCustomerLine()
 
   drawStars() {
+    console.log('drawing stars')
+    gameState.starGroup.clear(true)
     for (let i = 0; i < gameState.starRating; i++) {
       let spacer = i * 50
       gameState.starGroup.create(20 + spacer, gameState.cam.worldView.top + 20, 'Star-full').setScale(0.65)
     }
-  }
+  } // End of drawStars()
+
+  updateStars(fullnessValue, fullnessCapacity) {
+    console.log('updating stars')
+    if (fullnessValue === fullnessCapacity) {
+      console.log('perfect')
+      gameState.currentCustomer.list[0].setTint(0x3ADB40)
+      gameState.sfx.servingCorrect.play()
+      gameState.score += 100
+      gameState.scoreText.setText(gameState.score)
+      if (gameState.starRating < 5) {
+        gameState.starRating += 1
+      }
+      if (gameState.starRating === 5) {
+        gameState.sfx.fiveStar.play()
+      }
+    } 
+    else if (fullnessValue < fullnessCapacity) {
+      console.log('too little')
+      gameState.currentCustomer.list[0].setTint(0xDB533A)
+      gameState.sfx.servingIncorrect.play()
+      gameState.starRating -= 2
+    } 
+    else if (fullnessValue > fullnessCapacity) {
+      console.log('too much')
+      gameState.currentCustomer.list[0].setTint(0xDB9B3A)
+      gameState.sfx.servingEmpty.play()
+      gameState.starRating -= 1
+    }
+
+    this.drawStars()
+  } // End of updateStars()
 } // End of GameScene class
