@@ -177,6 +177,10 @@ class GameScene extends Phaser.Scene {
     gameState.keys.D = this.input.keyboard.addKey(
       Phaser.Input.Keyboard.KeyCodes.D
     );
+
+    gameState.starGroup = this.add.group();
+    this.drawStars()
+    
   } // End of Create()
 
   update() {
@@ -435,4 +439,11 @@ class GameScene extends Phaser.Scene {
     gameState.customersServedCount += 1;
     gameState.readyForNextOrder = true;
   } // End of moveCustomerLine()
+
+  drawStars() {
+    for (let i = 0; i < gameState.starRating; i++) {
+      let spacer = i * 50
+      gameState.starGroup.create(20 + spacer, gameState.cam.worldView.top + 20, 'Star-full').setScale(0.65)
+    }
+  }
 } // End of GameScene class
