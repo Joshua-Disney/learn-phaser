@@ -485,3 +485,6 @@ class GameScene extends Phaser.Scene {
     this.drawStars()
   } // End of updateStars()
 } // End of GameScene class
+
+
+// Codecademy is down today but I tried
